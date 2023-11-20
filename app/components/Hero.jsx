@@ -1,36 +1,50 @@
+"use client"
+import React,{useState} from 'react'
+import Button from "@/app/components/Button"
 import Image from 'next/image'
-import React from 'react'
-
+import { statistics,shoes } from '../constants'
+import ShoeCard from "@/app/components/ShoeCard"
 const Hero = () => {
+  const [bigShoeImg, setBigShoeImg] = useState("/bigShoe1.png");
   return (
-    <>
-    <div className='relative '>
-        <h1 className='absolute uppercase text-center flex justify-center ml-10 text-white'>Plan your Trip</h1>
-<Image src="/d1.jpg" alt="" width={250} height={450} className='bg-cover bg-center'/>
+  
+    <section id="home" className='w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container'>
+<div className='relative  xl:w-2/5 justify-center items-start w-full max-xl:padding-x pt-28 '>
+<p className='text-xl font-montserrat text-coral-red'>Hot Winter Collection</p>
+<h1 className='mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px]  font-bold'><span className='xl:bg-white xl:whitespace-nowrap relative z-10  pr-10 '>New Arrival</span>
+<br/>
+<span className='text-coral-red inline-block mt-3   '>Nike</span>Shoes
 
-    </div>
-    <div className='m-5 w-40  h-20 flex justify-center shadow-xs font-semibold'>
-        <h1 className='text-3xl '>Disocover our trips</h1>
-    </div>
-
-<Image src="/7.jpg" alt="" width={250} height={350}/>
-
-    <div className='bg-blue-500 w-56 text-white  h-40 text-center pr-5 pt-2    '>
-<h1>Create your own history</h1>
-<p className='flex justify-start'>Lorem ipsum dolor sit, amet consectetur </p>
-    <button className='bg-white text-blue-500 p-3 font-semibold    flex justify-start  m-3 rounded-3xl'>Learn more</button>
-      </div>
-      <div className='  '>
-        <h1 className='text-2xl h-20 text-left uppercase font-semibold '>Useful
-        <br/>
-         Information</h1>
-        <Image src="/9.jpg" alt="" width={250} height={450} className='bg-cover bg-center'/>
-     <h3 className='p-2 m-2'>Getting here</h3>
- <h1 className='text-blue-500 text-xl mb-2 ml-2'>Transportation</h1>
-<p className=' text-xs text-left pr-6   mr-44 p-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, quaerat corrupti iure ut ex dolor, minima dolorem voluptatibus voluptate similique consequuntur odio consequatur quas quisquam aspernatur enim maxime praesentium dolore?</p>
-      </div>
-    </>
-
+</h1>
+<p className='font-montserrat text-slate-gray  text-lg leading-8 mt-6 mb-14 sm:max-w-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, hic?</p>
+<Button label="Shop Now" />
+<div className='flex justify-start items-start flex-wrap w-full mt-20 gap-16 '>
+{statistics.map((stat, index) => (
+            <div key={index}>
+              <p className='text-4xl font-palanquin font-bold'>{stat.value}</p>
+              <p className='leading-7 font-montserrat text-slate-gray'>
+                {stat.label}
+              </p>
+            </div>
+          ))}
+</div>
+</div>
+<div className='relative  flex-1 xl:min-h-screen max-xl:py-40 bg-primary bg-hero  bg-cover bg-center flex justify-center items-center'>
+    <Image src={bigShoeImg} alt="" width={610} height={510} className='object-contain relative  z-10'/>
+    <div className='flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6 '>
+          {shoes.map((image, index) => (
+            <div key={index}>
+              <ShoeCard
+                index={index}
+                imgURL={image}
+                changeBigShoeImage={(shoe) => setBigShoeImg(shoe)}
+                bigShoeImg={bigShoeImg}
+              />
+            </div>
+          ))}
+        </div>
+</div>
+    </section>
   )
 }
 
