@@ -25,7 +25,7 @@ className='text-lg text-slate-500'>
 }
 
     </ul>
-<    div className='sm:hidden block mr-14'>
+<    div className='sm:hidden block mr-10 '>
 <FiMenu  height={35} width={35} size={35} />
 </div>
    
